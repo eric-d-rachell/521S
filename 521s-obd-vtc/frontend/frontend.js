@@ -1,4 +1,4 @@
-var socket = io.connect('http://54.186.6.245:5000');
+var socket = io.connect('http://REDACT');
 
 $(document).ready(function() {
 
