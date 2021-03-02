@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <style type="text/css">
+         html { height: 100% }
+         body { height: 100%; margin: auto; padding: 0 }
+         #map{ height: 70%; width: 70%;margin: auto;}
+         .list-group{max-height: 200px; overflow: scroll; overflow-x: auto;}
+         .boxClass{float: right; margin-top: 2px; margin-left: 2px; width: 20px; height: 20px;}
+         .impact{min-width: 50%; overflow: hidden; background-color: green; border: solid #000; border-width: 1px;}
+      </style>
+      <meta charset="UTF-8">
+      <title>521 Vehicle Control Application</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDzJcxFOwaVRYiWeW9lMvxzCVuXWlhmnqc"></script>
+      <script src= "./gauge.min.js"></script>
+      <script src= "./frontend.js"></script>
+   </head>
+   <body>
+      <div>
+         <div class="row justify-content-center">
+            <canvas id="speed" style="height: 220px;"></canvas>
+            <canvas id="rpm" style="height: 220px;"></canvas>     
+            <canvas id="throttle" style="height: 220px;">
+         </div>
+         <div class="row justify-content-center">
+            <span class="text-right" style="min-width: 33%; padding-right: 5%;"><b>Speed</b></span>
+            <span class="text-center" style="min-width: 33%;"><b>RPMs</b></span>
+            <span class="text-left" style="min-width: 33%; padding-left: 5%;"><b>Throttle (%)</b></span>
+         </div>
+      </div>
+      <br>
+      <div id="map"></div>
+
+      <div class="container" style="padding-top: 2%; padding-bottom: 1%;">
+         <div class="row justify-content-center">
+            <div id="vehicles" class="list-group col-lg-4"></div>
+             <div id="histories" class="list-group col-lg-4"></div>
+             <div class="list-group col-lg-4">
+               <div class="row">
+                  <div class="list-group-item list-group-item-action">
+                     <div class="row justify-content-center" style="min-height: 30px; padding-bottom: 10px;">
+                        <button class="btn btn-danger" onclick="resetImpacts()">Reset Impacts</button>
+                        <button class="btn btn-warning" onclick="clearAnomalies()" style="margin-left: 5px;">Reset Anomalies</button>
+                     </div>
+                     <div class="row justify-content-center impact" id="front" style="min-height: 50px;"><b style="color: black;">FRONT</b></div>
+                     <div class="row justify-content-center impact" style="min-height: 50px;">
+                        <div class="list-group col-lg-6 impact text-center impact" id="left"><b style="color: black;">LEFT</b></div>
+                        <div class="list-group col-lg-6 impact text-center impact" id="right"><b style="color: black;">RIGHT</b></div>
+                     </div>
+                     <div class="row justify-content-center impact" id="rear" style="min-height: 50px;"><b style="color: black;">REAR</b></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+       </div>
+   </body>
+</html>
+
