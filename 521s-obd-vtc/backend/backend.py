@@ -6,8 +6,8 @@ from datetime import datetime
 import json
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
-app.config["MONGO_URI"] = "mongodb://piOBD:521s@54.186.6.245/obdVTC"
+app.config['SECRET_KEY'] = ##REDACT##
+app.config["MONGO_URI"] = ##REDACT##
 mongo = PyMongo(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
